@@ -87,6 +87,7 @@ public class AppointmentDialog extends Dialog {
   private void sendEmailIfConfirmationChecked() {
 		if (detailComposite.getEmailCheckboxStatus()) {
 			EmailDetails emailDetails = detailComposite.getEmailDeteils();
+			eventBroker.send("SEND_MAIL_PREPARE", appointment); //$NON-NLS-1$
 			emailSender.sendEmail(emailDetails, appointment);
 		}
 	}
